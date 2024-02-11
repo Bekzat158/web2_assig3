@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bekzat</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Подключение файла стилей -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="logo">
+                    <img src="/logo.jpg" alt="Logo">
+                </div>
+                <% if (loggedIn) { %>
+                    <li><a href="/">home</a></li>
+                    <li><a href="/anime">anime</a></li>
+                    <li><a href="/movie">movie</a></li>
+                    <li><a href="/profile">
+                            <%= username %>
+                    </a></li>
+                    <li><a href="/logout">logout</a></li>
+                <% } %>
+
+                <% if (admin) { %>
+                    <li><a href="/admin">admin</a></li>
+                <% } %>
+
+                <% if (!loggedIn) { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>

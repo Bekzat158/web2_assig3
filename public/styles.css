@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Устанавливаем box-sizing: border-box для всех элементов */
+}
+
+header {
+    background-color: #333; /* Цвет фона шапки */
+    padding: 7px 0; /* Отступы сверху и снизу */
+    border-radius: 0 0 10px 10px;
+}
+
+nav ul {
+    list-style-type: none; /* Убираем стандартные маркеры списка */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Выравнивание по центру */
+}
+
+nav ul li {
+    display: inline; /* Элементы списка располагаются в одной линии */
+}
+
+nav ul li a {
+    color: white; /* Цвет текста ссылок */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    padding: 14px 20px; /* Отступы внутри ссылок */
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Цвет фона ссылки при наведении */
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center; /* Центрируем содержимое по горизонтали */
+    background-color: #f8f9fa; /* Цвет фона футера */
+    padding: 5px 0; /* Отступы сверху и снизу */
+}
+.center{
+    width: 50%; /* Задаем ширину формы */
+    margin: 5rem auto; /* Автоматический отступ слева и справа делает форму по центру */
+    text-align: center; /* Центрируем текст внутри формы */
+}
+
+.center div {
+    margin-bottom: 10px; /* Отступ между элементами формы */
+}
+
+/* Existing CSS */
+
+.anime-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.anime_form{
+    flex-direction:row;
+}
+
+#anime_search {
+    border-radius: 20px 0 0 20px;
+    padding: 10px;
+    width: 300px;
+    outline: none;
+}
+
+form button {
+    background-color: #333;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.type2_button{
+    border-radius: 20px 20px 20px 20px;
+    width: 100px;
+    margin: 0 auto; /* Центрируем кнопку по горизонтали */
+    display: block; 
+}
+
+form button:hover {
+    background-color: #3d823f;
+}
+
+.logo {
+    display: inline-block;
+    margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.logo img {
+    width: 50px; /* Adjust the width of the logo as needed */
+    vertical-align: middle;
+    border-radius: 20%;
+}
+ul {
+    list-style-type: none;
+}
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #f2f2f2;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+}
+
+.update-form, .delete-form, .create-form {
+    margin-bottom: 10px;
+}
+
+.update-button, .delete-button, .create-button {
+    margin-top: 10px;
+}
