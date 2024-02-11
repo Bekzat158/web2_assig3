@@ -10,16 +10,11 @@ const { verifyToken, redirectToHomeIfLoggedIn, ifAdmin } = require('./utils/auth
 const app = express();
 
 // Connect to MongoDB Atlas using environment variable
-
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGO_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
-}
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log('Connected to MongoDB Atlas');
+    })
+    .catch(err => console.error(err));
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
