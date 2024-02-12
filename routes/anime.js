@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
   const searchQuery = req.body.search;
   try {
-    const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(searchQuery)}&order_by=favorites&sort=desc`);
+    const response = await axios.get(`http://api.jikan.moe/v4/anime?q=${encodeURIComponent(searchQuery)}&order_by=favorites&sort=desc`);
     const animeData = response.data.data; // limit to 10 anime
 
     // Сохраняем данные аниме в базе данных
@@ -23,7 +23,8 @@ router.post('/', async (req, res) => {
 
     // Если нет записи, создаем новую
     if (!userAnime) {
-      userAnime = new Anime({ userId, animeList: [] });
+      const search = req.body.search;
+      userAnime = new Anime({ userId, search, animeList: [] });
     }
 
     // Добавляем новые данные аниме в массив animeList
