@@ -23,10 +23,11 @@ router.post('/', async (req, res) => {
 
     // Если нет записи, создаем новую
     if (!userMovies) {
-      userMovies = new Movie({ userId, movieList: [] });
+    const search = req.body.search;
+      userMovies = new Movie({ userId, search, movieList: [] });
     }
 
-    // Добавляем новые данные фильмов в массив movieList
+    // Добавляем новые данные фильмов в массив movieList4000
     movieData.forEach(movie => {
       userMovies.movieList.push({
         imageUrl: movie.poster_path ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : 'N/A',
