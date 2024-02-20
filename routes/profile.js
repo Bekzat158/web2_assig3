@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 });
 
 // POST /profile/delete
-router.post('/delete', async (req, res) => {
+router.delete('/', async (req, res) => {
     try {
         // Удаление пользователя из базы данных
         const decodedToken = jwt.decode(req.cookies.token);
@@ -31,7 +31,7 @@ router.post('/delete', async (req, res) => {
 });
 
 // POST /profile/password
-router.post('/pass', async (req, res) => {
+router.put('/', async (req, res) => {
     const { password, password2,password3 } = req.body;
     const decodedToken = jwt.decode(req.cookies.token);
     const id = decodedToken.userId;

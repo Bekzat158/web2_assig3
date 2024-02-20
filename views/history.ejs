@@ -1,0 +1,38 @@
+<%- include('header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="history-column">
+                <h2 class="mb-4">Anime История</h2>
+                <% if (userAnime.length > 0) { %>
+                    <% userAnime.forEach(anime => { %>
+                        <div class="history-item">
+                            <p><strong>Search:</strong> <%= anime.search %></p>
+                            <p><strong>Created At:</strong> <%= new Date(anime.createdAt).toLocaleString() %></p>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>Нет результатов поиска для Anime.</p>
+                <% } %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="history-column">
+                <h2 class="mb-4">Movie История</h2>
+                <% if (userMovies.length > 0) { %>
+                    <% userMovies.forEach(movie => { %>
+                        <div class="history-item">
+                            <p><strong>Search:</strong> <%= movie.search %></p>
+                            <p><strong>Created At:</strong> <%= new Date(movie.createdAt).toLocaleString() %></p>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>Нет результатов поиска для Movie.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>

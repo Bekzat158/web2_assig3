@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const movieSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Ссылка на пользователя
     search: { type: String }, // Add a search field,
+    createdAt: { type: Date, default: Date.now },
     movieList: [{
         imageUrl: { type: String, required: true },
         title: String,
@@ -10,8 +11,6 @@ const movieSchema = new mongoose.Schema({
         popularity: Number,
         releaseDate: Date // Изменено на тип Date
     }]
-}, {
-    timestamps: true // Добавление меток времени
 });
 
 module.exports = mongoose.model('Movie', movieSchema);

@@ -1,12 +1,25 @@
 <%- include('header') %>
 <div class="center">
-    <h1 class="about-title">About Us</h1>
-    <div class="about-content">
-        <p>Welcome to our website! We are dedicated to providing you with a rich selection of entertainment content to enhance your online experience.</p>
-        <p>Our team works tirelessly to curate the best movies and anime series for your enjoyment. Whether you're a casual viewer or a die-hard fan, we have something for everyone.</p>
-        <p>Explore our site to discover a world of thrilling narratives, captivating characters, and breathtaking visuals. From action-packed blockbusters to heartwarming dramas, there's always something new to discover.</p>
-        <p>Join our community of passionate fans and engage in lively discussions, share recommendations, and connect with fellow enthusiasts from around the globe.</p>
-        <p>Thank you for choosing our platform. We hope you have an unforgettable experience!</p>
+    <h1>Items Carousel</h1>
+    <div id="itemsCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <% items.forEach((item, index) => { %>
+                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                    <h2><%= item.name %></h2>
+                    <img src="<%= item.imageURL %>" class="d-block w-100" alt="Item Image">
+                    <p><%= item.description %></p>
+
+                </div>
+            <% }) %>
+        </div>
+        <a class="carousel-control-prev" href="#itemsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#itemsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </div>
 <%- include('footer') %>

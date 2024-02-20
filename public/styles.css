@@ -4,32 +4,6 @@
     box-sizing: border-box; /* Устанавливаем box-sizing: border-box для всех элементов */
 }
 
-header {
-    background-color: #333; /* Цвет фона шапки */
-    padding: 7px 0; /* Отступы сверху и снизу */
-    border-radius: 0 0 10px 10px;
-}
-
-nav ul {
-    list-style-type: none; /* Убираем стандартные маркеры списка */
-    margin: 0;
-    padding: 0;
-    text-align: center; /* Выравнивание по центру */
-}
-
-nav ul li {
-    display: inline; /* Элементы списка располагаются в одной линии */
-}
-
-nav ul li a {
-    color: white; /* Цвет текста ссылок */
-    text-decoration: none; /* Убираем подчеркивание у ссылок */
-    padding: 14px 20px; /* Отступы внутри ссылок */
-}
-
-nav ul li a:hover {
-    background-color: #555; /* Цвет фона ссылки при наведении */
-}
 footer {
     position: fixed;
     bottom: 0;
@@ -48,7 +22,34 @@ footer {
     margin-bottom: 10px; /* Отступ между элементами формы */
 }
 
-/* Existing CSS */
+/* code */
+header {
+    border-radius: 0px 0px 10px 10px; /* Border radius */
+    overflow: hidden; /* Ensure border radius only applies to the bottom */
+}
+
+.item-image {
+    width: 200px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    object-fit: cover; /* Ensures the image covers the specified dimensions */
+}
+.nav-item a {
+    color: #fff; /* Text color */
+    font-weight: bold; /* Bold font weight */
+}
+
+.nav-item a:hover {
+    color: #ccc; /* Hover color */
+}
+
+/* Custom CSS for centering navigation items */
+.navbar-nav {
+    margin: 0 auto; /* Center the navbar items */
+    display: flex;
+    justify-content: center;
+}
+
+
 
 .anime-cards {
     display: flex;
@@ -170,4 +171,28 @@ ul {
 
 .update-button, .delete-button, .create-button {
     margin-top: 10px;
+}
+.history-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem; /* Add some top margin for spacing */
+}
+
+.history-column {
+    flex-basis: 48%; /* Adjusted width for better alignment */
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.history-item {
+    margin-bottom: 15px; /* Adjusted margin between items */
+    padding: 10px;
+    border: 1px solid #ddd; /* Add a border to each history item */
+    border-radius: 5px;
+}
+
+.history-item p {
+    margin-bottom: 8px; /* Adjusted margin for paragraph elements */
 }

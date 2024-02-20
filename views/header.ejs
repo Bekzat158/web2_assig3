@@ -1,38 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bekzat</title>
     <link rel="stylesheet" href="/styles.css"> <!-- Подключение файла стилей -->
-</head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional CSS for the navigation items */
+        .nav-item a {
+            color: #fff; /* Text color */
+            font-weight: bold; /* Bold font weight */
+        }
 
+        .nav-item a:hover {
+            color: #ccc; /* Hover color */
+        }
+    </style>
+</head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <div class="logo">
-                    <img src="/logo.jpg" alt="Logo">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="/logo.jpg" alt="Logo" style="width: 50px; border-radius: 20%;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <% if (loggedIn) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/anime">Anime</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/movie">Movie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/profile"><%= username %></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/history">History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                        <% } %>
+                        <% if (admin) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Admin</a>
+                            </li>
+                        <% } %>
+                        <% if (!loggedIn) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register">Register</a>
+                            </li>
+                        <% } %>
+                    </ul>
                 </div>
-                <% if (loggedIn) { %>
-                    <li><a href="/">home</a></li>
-                    <li><a href="/anime">anime</a></li>
-                    <li><a href="/movie">movie</a></li>
-                    <li><a href="/profile">
-                            <%= username %>
-                    </a></li>
-                    <li><a href="/logout">logout</a></li>
-                <% } %>
-
-                <% if (admin) { %>
-                    <li><a href="/admin">admin</a></li>
-                <% } %>
-
-                <% if (!loggedIn) { %>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                <% } %>
-            </ul>
+            </div>
         </nav>
     </header>

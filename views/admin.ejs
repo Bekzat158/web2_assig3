@@ -1,52 +1,131 @@
 <%- include('header') %>
-<div class="center">
+<div class="container mt-5">
     <% if (typeof errorMessage !== 'undefined') { %>
-        <p class="error-message"><%= errorMessage %></p>
+        <div class="alert alert-danger" role="alert">
+            <%= errorMessage %>
+        </div>
     <% } %>
 
     <% if (typeof successMessage !== 'undefined') { %>
-        <p class="success-message"><%= successMessage %></p>
+        <div class="alert alert-success" role="alert">
+            <%= successMessage %>
+        </div>
     <% } %>
 
-    <!-- Table to display users -->
-    <table class="user-table">
-        <tr>
-            <th>Username</th>
-            <th>Is Admin</th>
-            <th>Actions</th>
-        </tr>
-        <% users.forEach(user => { %>
-            <tr>
-                <td><%= user.username %></td>
-                <td><%= user.isAdmin ? 'Yes' : 'No' %></td>
-                <td>
-                    <form action="/admin/update/<%= user._id %>" method="POST" class="update-form">
-                        <label for="newUsername">New Username:</label>
-                        <input type="text" id="newUsername" name="newUsername" value="<%= user.username %>" required><br>
-                        <label for="password">New Password:</label>
-                        <input type="password" id="password" name="password"><br>
-                        <label for="isAdmin">Is Admin:</label>
-                        <input type="checkbox" id="isAdmin" name="isAdmin" <% if (user.isAdmin) { %>checked<% } %>><br>
-                        <button class="type2_button update-button" type="submit">Update</button>
-                    </form>
-                    <form action="/admin/delete/<%= user._id %>" method="POST" class="delete-form">
-                        <button class="type2_button delete-button" type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        <% }) %>
-        <h2>Create New User</h2>
-        <form action="/admin/create" method="POST" class="create-form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br>
-            <label for="password">Password:</label>
-            <input type="password" class="password" name="password" required><br>
-            <label for="password">Confirm Password:</label>
-            <input type="password" class="password" name="password2" required><br>
-            <label for="isAdmin">Is Admin:</label>
-            <input type="checkbox" id="isAdmin" name="isAdmin"><br>
-            <button class="type2_button create-button" type="submit">Create User</button>
+    <div class="text-center mb-5">
+        <h2>Create New Item</h2>
+        <form action="/admin/items" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imageURL">Image URL:</label>
+                <input type="text" class="form-control" id="imageURL" name="imageURL" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Item</button>
         </form>
-    </table>
-</div>
+    </div>
+
+    <div class="mb-5">
+        <h2>Items</h2>
+        <div class="row">
+            <% items.forEach(item => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="<%= item.imageURL %>" alt="Item Image">
+                        <div class="card-body">
+                            <form action="/admin/items/<%= item._id %>" method="POST">
+                                <input type="hidden" name="_method" value="PUT">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="<%= item.name %>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" id="description" name="description" required><%= item.description %></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="imageURL">Image URL:</label>
+                                    <input type="text" class="form-control" id="imageURL" name="imageURL" value="<%= item.imageURL %>" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                            <form action="/admin/items/<%= item._id %>/delete" method="POST">
+                                <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <h2>Create New User</h2>
+        <form action="/admin" method="POST" class="create-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Confirm Password:</label>
+                <input type="password" class="form-control" name="password2" required>
+            </div>
+            <div class="form-group">
+                <label for="isAdmin">Is Admin:</label>
+                <input type="checkbox" id="isAdmin" name="isAdmin">
+            </div>
+            <button class="btn btn-primary create-button" type="submit">Create User</button>
+        </form>
+    </div>
+
+    <!-- Table to display users -->
+    <div class="table-responsive">
+        <table class="table user-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Is Admin</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.username %></td>
+                        <td><%= user.isAdmin ? 'Yes' : 'No' %></td>
+                        <td>
+                            <form action="/admin/<%= user._id %>?_method=PUT" method="POST" class="update-form">
+                                <div class="form-group">
+                                    <label for="newUsername">New Username:</label>
+                                    <input type="text" class="form-control" id="newUsername" name="newUsername" value="<%= user.username %>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">New Password:</label>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="isAdmin">Is Admin:</label>
+                                    <input type="checkbox" id="isAdmin" name="isAdmin" <% if (user.isAdmin) { %>checked<% } %>>
+                                </div>
+                                <button class="btn btn-primary update-button" type="submit">Update</button>
+                            </form>
+                            <form action="/admin/<%= user._id %>?_method=DELETE" method="POST" class="delete-form">
+                                <button class="btn btn-danger delete-button" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
 <%- include('footer') %>

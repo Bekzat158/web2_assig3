@@ -1,26 +1,43 @@
 <%- include('header') %>
-    <div class="center">
-        <h1>Registration</h1>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div >
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Registration</h1>
+                </div>
+                <div class="card-body">
+                    <% if (typeof successMessage !== 'undefined') { %>
+                        <div class="alert alert-success" role="alert">
+                            <%= successMessage %>
+                            <p>Click <a href="/login">here</a> to login.</p>
+                        </div>
+                    <% } %>
 
-        <% if (typeof successMessage !== 'undefined') { %>
-            <p style="color: green;"><%= successMessage %></p>
-        <% } %>
+                    <% if (typeof errorMessage !== 'undefined') { %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= errorMessage %>
+                        </div>
+                    <% } %>
 
-        <% if (typeof errorMessage !== 'undefined') { %>
-            <p style="color: red;"><%= errorMessage %></p>
-        <% } %>
-
-        <form action="/register" method="post">
-            <div>
-                <input type="text" name="username" placeholder="Username" value="<%= typeof username !== 'undefined' ? username : '' %>" required>
+                    <form action="/register" method="post">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" value="<%= typeof username !== 'undefined' ? username : '' %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                </div>
             </div>
-            <div>
-                <input type="password" name="password" placeholder="Password" value="<%= typeof password !== 'undefined' ? password : '' %>" required>
-            </div>
-            <div>
-                <input type="password" name="password2" placeholder="Confirm Password" value="<%= typeof password2 !== 'undefined' ? password2 : '' %>" required>
-            </div>
-            <button class="type2_button" type="submit">Register</button>
-        </form>
+        </div>
     </div>
+</div>
 <%- include('footer') %>

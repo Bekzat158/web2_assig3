@@ -18,14 +18,9 @@ router.post('/', async (req, res) => {
     const decodedToken = jwt.decode(req.cookies.token);
     const userId = decodedToken.userId; // Получаем userId из токена
 
-    // Получаем запись фильмов для данного пользователя
-    let userMovies = await Movie.findOne({ userId });
-
-    // Если нет записи, создаем новую
-    if (!userMovies) {
     const search = req.body.search;
-      userMovies = new Movie({ userId, search, movieList: [] });
-    }
+
+    userMovies = new Movie({ userId, search, movieList: [] });
 
     // Добавляем новые данные фильмов в массив movieList4000
     movieData.forEach(movie => {

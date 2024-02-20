@@ -20,6 +20,18 @@ const verifyToken = (req, res, next) => {
     }
 };
 
+const navbar = (req, res, next) => {
+    res.locals.loggedIn = req.cookies.token ? true : false;
+    if (req.cookies.token) {
+        const decodedToken = jwt.decode(req.cookies.token);
+        res.locals.username = decodedToken.username;
+        res.locals.admin = decodedToken.isAdmin ? true : false;
+    } else {
+        res.locals.admin = false;
+    }
+    next();
+};
+    
 const redirectToHomeIfLoggedIn = (req, res, next) => {
     const token = req.cookies.token;
     if (token) {
@@ -62,4 +74,9 @@ const ifAdmin = (req, res, next) => {
 
 };
 
-module.exports = { verifyToken, redirectToHomeIfLoggedIn, ifAdmin };
+const pageNotFound = (req, res, next) => {
+    res.status(404).send('<center><h1>404 Not Found</h1></center>'); 
+    next();
+};
+
+module.exports = { verifyToken, redirectToHomeIfLoggedIn, ifAdmin ,navbar,pageNotFound};
