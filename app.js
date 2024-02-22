@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 });
 
 app.use((navbar));
+app.use('/language', require('./routes/language'));
 
 app.use('/login', redirectToHomeIfLoggedIn, require('./routes/login'));
 app.use('/register', redirectToHomeIfLoggedIn, require('./routes/register'));

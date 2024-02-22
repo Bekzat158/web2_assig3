@@ -26,12 +26,14 @@ const navbar = (req, res, next) => {
         const decodedToken = jwt.decode(req.cookies.token);
         res.locals.username = decodedToken.username;
         res.locals.admin = decodedToken.isAdmin ? true : false;
+        res.locals.language = req.cookies.language || 'english'; // Extract language from cookies
     } else {
         res.locals.admin = false;
+        res.locals.language = 'english'; // Set default language
     }
     next();
 };
-    
+ 
 const redirectToHomeIfLoggedIn = (req, res, next) => {
     const token = req.cookies.token;
     if (token) {

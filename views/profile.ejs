@@ -2,8 +2,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1 class="text-center mb-4">User Profile</h1>
-            <h3 class="text-center mb-4" style="color: aquamarine;">Welcome, <%= username %>!</h3>
+            <h1 class="text-center mb-4"> <%= language === 'russian' ? 'Профиль пользователя' : 'User Profile' %> </h1>
+            <h3 class="text-center mb-4" style="color: aquamarine;">
+                <%= language === 'russian' ? 'Добро пожаловать, ' + username + '!' : 'Welcome, ' + username + '!' %>
+            </h3>
 
             <!-- Error message section -->
             <% if (typeof errorMessage !== 'undefined') { %>
@@ -15,21 +17,25 @@
 
             <!-- Form for deleting account -->
             <form action="/profile/?_method=DELETE" method="POST">
-                <button class="btn btn-danger btn-block mb-3" type="submit">Delete Account</button>
+                <button class="btn btn-danger btn-block mb-3" type="submit">
+                    <%= language === 'russian' ? 'Удалить аккаунт' : 'Delete Account' %>
+                </button>
             </form>
 
             <!-- Form for changing password -->
             <form action="/profile/?_method=PUT" method="POST">
                 <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="Old Password">
+                    <input type="password" class="form-control" name="password" placeholder="<%= language === 'russian' ? 'Старый пароль' : 'Old Password' %>">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="password2" placeholder="New Password">
+                    <input type="password" class="form-control" name="password2" placeholder="<%= language === 'russian' ? 'Новый пароль' : 'New Password' %>">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="password3" placeholder="Confirm New Password">
+                    <input type="password" class="form-control" name="password3" placeholder="<%= language === 'russian' ? 'Подтвердите новый пароль' : 'Confirm New Password' %>">
                 </div>
-                <button class="btn btn-primary btn-block" type="submit">Change Password</button>
+                <button class="btn btn-primary btn-block" type="submit">
+                    <%= language === 'russian' ? 'Изменить пароль' : 'Change Password' %>
+                </button>
             </form>
         </div>
     </div>

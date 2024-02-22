@@ -4,7 +4,7 @@
         <div class="">
             <div class="card">
                 <div class="card-header">
-                    <h1 class="text-center">Login</h1>
+                    <h1 class="text-center"><%= language === 'russian' ? 'Войти' : 'Login' %></h1>
                 </div>
                 <div class="card-body">
                     <% if (typeof errorMessage !== 'undefined') { %>
@@ -15,14 +15,14 @@
 
                     <form action="/login" method="post">
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                            <label for="username"><%= language === 'russian' ? 'Имя пользователя' : 'Username' %></label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="<%= language === 'russian' ? 'Введите ваше имя пользователя' : 'Enter your username' %>" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                            <label for="password"><%= language === 'russian' ? 'Пароль' : 'Password' %></label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="<%= language === 'russian' ? 'Введите ваш пароль' : 'Enter your password' %>" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block"><%= language === 'russian' ? 'Войти' : 'Login' %></button>
                     </form>
                 </div>
             </div>

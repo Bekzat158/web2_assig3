@@ -1,8 +1,12 @@
 <%- include('header') %>
 
 <form class="anime_form" action="/movie" method="POST">
-  <input type="text" id="anime_search" name="search" placeholder="Search for movie and show">
-  <button type="submit">Search</button>
+  <input type="text" id="anime_search" name="search" placeholder=
+  <%= language === 'russian' ? `Кино` : `Movie` %>
+  >
+  <button type="submit">
+    <%= language === 'russian' ? 'Поиск' : 'Search' %>
+    </button>
 </form>
 
 <div class="anime-cards">

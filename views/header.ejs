@@ -6,17 +6,6 @@
     <title>Bekzat</title>
     <link rel="stylesheet" href="/styles.css"> <!-- Подключение файла стилей -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Additional CSS for the navigation items */
-        .nav-item a {
-            color: #fff; /* Text color */
-            font-weight: bold; /* Bold font weight */
-        }
-
-        .nav-item a:hover {
-            color: #ccc; /* Hover color */
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -27,42 +16,71 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav mr-auto">
                         <% if (loggedIn) { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="/">Home</a>
+                                <a class="nav-link" href="/"> <%= language === 'russian' ? 'Главная' : 'Home' %> </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/anime">Anime</a>
+                                <a class="nav-link" href="/anime"> <%= language === 'russian' ? 'Аниме' : 'Anime' %> </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/movie">Movie</a>
+                                <a class="nav-link" href="/movie"> <%= language === 'russian' ? 'Фильмы' : 'Movie' %> </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/profile"><%= username %></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/history">History</a>
+                                <a class="nav-link" href="/history"> <%= language === 'russian' ? 'История' : 'History' %> </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/logout">Logout</a>
+                                <a class="nav-link" href="/logout"> <%= language === 'russian' ? 'Выйти' : 'Logout' %> </a>
                             </li>
                         <% } %>
                         <% if (admin) { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin">Admin</a>
+                                <a class="nav-link" href="/admin"> <%= language === 'russian' ? 'Админ' : 'Admin' %> </a>
                             </li>
                         <% } %>
                         <% if (!loggedIn) { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="/login">Login</a>
+                                <a class="nav-link" href="/login"> <%= language === 'russian' ? 'Войти' : 'Login' %> </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/register">Register</a>
+                                <a class="nav-link" href="/register"> <%= language === 'russian' ? 'Зарегистрироваться' : 'Register' %> </a>
                             </li>
                         <% } %>
                     </ul>
+                    <form id="languageForm" class="form-inline my-2 my-lg-0 language-dropdown">
+                        <select id="languageSelect" class="custom-select mr-sm-2" name="language">
+                            <option value="english" <%= language === 'english' ? 'selected' : '' %>>English</option>
+                            <option value="russian" <%= language === 'russian' ? 'selected' : '' %>>Russian</option>
+                        </select>
+                        <button id="languageSubmit" class="btn btn-outline-light my-2 my-sm-0" type="button">
+                            <%= language === 'russian' ? "Выберите язык" : "Select Language" %>
+                        </button>
+                    </form>
+                    
                 </div>
             </div>
         </nav>
     </header>
+    <script>
+        document.getElementById('languageSubmit').addEventListener('click', async () => {
+            const language = document.getElementById('languageSelect').value;
+            const response = await fetch('/language', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ language })
+            });
+    
+            if (response.ok) {
+                location.reload(); // Обновляем страницу после успешного обновления языка
+            } else {
+                console.error('Failed to update language');
+            }
+        });
+    </script>
+    

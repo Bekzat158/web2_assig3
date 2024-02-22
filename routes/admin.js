@@ -12,10 +12,10 @@ router.get('/', async (req, res) => {
         const users = await User.find();
         const items = await Item.find();
 
-        res.render('admin', { users ,items}); // Pass users to the template
+        res.render('admin', { users, items }); // Pass users and items to the template
     } catch (error) {
         console.error(error);
-        res.status(500).json({ errorMessage: 'Error fetching users' });
+        res.status(500).json({ errorMessage: 'Error fetching users or items' });
     }
 });
 
@@ -82,9 +82,9 @@ router.put('/:id', async (req, res) => {
 });
 
 router.post('/items', async (req, res) => {
-    const { name, description, imageURL } = req.body;
+    const { nameEn, nameRus, descriptionEn, descriptionRus, imageURL } = req.body;
     try {
-        const newItem = new Item({ name, description, imageURL });
+        const newItem = new Item({ nameEn, nameRus, descriptionEn, descriptionRus, imageURL });
         await newItem.save();
         res.redirect('/admin');
     } catch (error) {
@@ -96,9 +96,9 @@ router.post('/items', async (req, res) => {
 // POST update item
 router.post('/items/:id', async (req, res) => {
     const { id } = req.params;
-    const { name, description, imageURL } = req.body;
+    const { nameEn, nameRus, descriptionEn, descriptionRus, imageURL } = req.body;
     try {
-        await Item.findByIdAndUpdate(id, { name, description, imageURL });
+        await Item.findByIdAndUpdate(id, { nameEn, nameRus, descriptionEn, descriptionRus, imageURL });
         res.redirect('/admin');
     } catch (error) {
         console.error(error);
@@ -107,7 +107,7 @@ router.post('/items/:id', async (req, res) => {
 });
 
 // POST delete item
-router.post('/items/:id/delete', async (req, res) => {
+router.delete('/items/:id', async (req, res) => {
     const { id } = req.params;
     try {
         await Item.findByIdAndDelete(id);
@@ -117,4 +117,5 @@ router.post('/items/:id/delete', async (req, res) => {
         res.status(500).json({ errorMessage: 'Error deleting item' });
     }
 });
+
 module.exports = router;

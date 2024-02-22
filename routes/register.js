@@ -8,7 +8,7 @@ const { validateRegistration } = require('../utils/validation');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('register');
+    res.render('register', { language: req.cookies.language || 'english' });
 });
 
 router.post('/', async (req, res) => {

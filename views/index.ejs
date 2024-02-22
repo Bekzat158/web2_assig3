@@ -1,14 +1,15 @@
 <%- include('header') %>
 <div class="center">
-    <h1>Items Carousel</h1>
+    <h1><%= language === 'russian' ? "Админу нравится это аниме" : "Admin like this anime" %></h1>
+    
     <div id="itemsCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <% items.forEach((item, index) => { %>
                 <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-                    <h2><%= item.name %></h2>
+                    <h2><%= language === 'russian' ? item.nameRus : item.nameEn %></h2>
                     <img src="<%= item.imageURL %>" class="d-block w-100" alt="Item Image">
-                    <p><%= item.description %></p>
-
+                    <!-- Display the appropriate description based on selected language -->
+                    <p><%= language === 'russian' ? item.descriptionRus : item.descriptionEn %></p>
                 </div>
             <% }) %>
         </div>

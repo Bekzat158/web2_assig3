@@ -12,10 +12,10 @@ footer {
     background-color: #f8f9fa; /* Цвет фона футера */
     padding: 5px 0; /* Отступы сверху и снизу */
 }
-.center{
-    width: 50%; /* Задаем ширину формы */
-    margin: 5rem auto; /* Автоматический отступ слева и справа делает форму по центру */
-    text-align: center; /* Центрируем текст внутри формы */
+.center {
+    width: 50%;
+    margin: 2rem auto 5rem; /* Adjust the top margin to 2rem and the bottom margin to 5rem */
+    text-align: center;
 }
 
 .center div {
@@ -195,4 +195,7 @@ ul {
 
 .history-item p {
     margin-bottom: 8px; /* Adjusted margin for paragraph elements */
+}
+.carousel-item img {
+    height: 400px; /* Adjust the height as needed */
 }

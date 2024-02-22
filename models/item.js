@@ -2,11 +2,19 @@
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
-    name: {
+    nameEn: {
         type: String,
         required: true
     },
-    description: {
+    nameRus: {
+        type: String,
+        required: true
+    },
+    descriptionEn: {
+        type: String,
+        required: true
+    },
+    descriptionRus: {
         type: String,
         required: true
     },

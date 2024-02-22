@@ -4,31 +4,31 @@
     <div class="row">
         <div class="col-md-6">
             <div class="history-column">
-                <h2 class="mb-4">Anime История</h2>
+                <h2 class="mb-4"> <%= language === 'russian' ? 'История поиска аниме' : 'Anime History' %> </h2>
                 <% if (userAnime.length > 0) { %>
                     <% userAnime.forEach(anime => { %>
                         <div class="history-item">
-                            <p><strong>Search:</strong> <%= anime.search %></p>
-                            <p><strong>Created At:</strong> <%= new Date(anime.createdAt).toLocaleString() %></p>
+                            <p><strong><%= language === 'russian' ? 'Поиск' : 'Search' %>:</strong> <%= anime.search %></p>
+                            <p><strong><%= language === 'russian' ? 'Создано' : 'Created At' %>:</strong> <%= new Date(anime.createdAt).toLocaleString() %></p>
                         </div>
                     <% }) %>
                 <% } else { %>
-                    <p>Нет результатов поиска для Anime.</p>
+                    <p><%= language === 'russian' ? 'Нет результатов поиска для аниме.' : 'No search results for Anime.' %></p>
                 <% } %>
             </div>
         </div>
         <div class="col-md-6">
             <div class="history-column">
-                <h2 class="mb-4">Movie История</h2>
+                <h2 class="mb-4"> <%= language === 'russian' ? 'История поиска фильмов' : 'Movie History' %> </h2>
                 <% if (userMovies.length > 0) { %>
                     <% userMovies.forEach(movie => { %>
                         <div class="history-item">
-                            <p><strong>Search:</strong> <%= movie.search %></p>
-                            <p><strong>Created At:</strong> <%= new Date(movie.createdAt).toLocaleString() %></p>
+                            <p><strong><%= language === 'russian' ? 'Поиск' : 'Search' %>:</strong> <%= movie.search %></p>
+                            <p><strong><%= language === 'russian' ? 'Создано' : 'Created At' %>:</strong> <%= new Date(movie.createdAt).toLocaleString() %></p>
                         </div>
                     <% }) %>
                 <% } else { %>
-                    <p>Нет результатов поиска для Movie.</p>
+                    <p><%= language === 'russian' ? 'Нет результатов поиска для фильмов.' : 'No search results for Movies.' %></p>
                 <% } %>
             </div>
         </div>
