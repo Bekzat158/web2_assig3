@@ -16,7 +16,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto" style="padding-left: 35px;">
                         <% if (loggedIn) { %>
                             <li class="nav-item">
                                 <a class="nav-link" href="/"> <%= language === 'russian' ? 'Главная' : 'Home' %> </a>
@@ -56,9 +56,6 @@
                             <option value="english" <%= language === 'english' ? 'selected' : '' %>>English</option>
                             <option value="russian" <%= language === 'russian' ? 'selected' : '' %>>Russian</option>
                         </select>
-                        <button id="languageSubmit" class="btn btn-outline-light my-2 my-sm-0" type="button">
-                            <%= language === 'russian' ? "Выберите язык" : "Select Language" %>
-                        </button>
                     </form>
                     
                 </div>
@@ -66,7 +63,7 @@
         </nav>
     </header>
     <script>
-        document.getElementById('languageSubmit').addEventListener('click', async () => {
+        document.getElementById('languageSelect').addEventListener('change', async () => {
             const language = document.getElementById('languageSelect').value;
             const response = await fetch('/language', {
                 method: 'POST',
