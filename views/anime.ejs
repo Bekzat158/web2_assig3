@@ -16,10 +16,10 @@
         <img src="<%= anime.images.jpg.image_url %>" alt="<%= anime.title %>">
         <div class="card-body">
           <h5 class="card-title"><%= anime.title_english ? anime.title_english : 'N/A' %></h5>
-          <p class="card-text">Alternative title: <%= anime.title ? anime.title : 'N/A' %></p>
-          <p class="card-text">Episodes: <%= anime.episodes ? anime.episodes : 'N/A' %></p>
-          <p class="card-text">Duration: <%= anime.duration ? anime.duration : 'N/A' %></p>
-          <p class="card-text">Genres: <%= anime.genres ? anime.genres.map(genre => genre.name).join(', ') : 'N/A' %></p>
+          <p class="card-text"><%= language === 'russian' ? 'Альтернатива' : 'Alternative title' %>: <%= anime.title ? anime.title : 'N/A' %></p>
+          <p class="card-text"><%= language === 'russian' ? 'Эпизоды' : 'Episodes' %>: <%= anime.episodes ? anime.episodes : 'N/A' %></p>
+          <p class="card-text"><%= language === 'russian' ? 'Продолжительность' : 'Duration' %>: <%= anime.duration ? anime.duration : 'N/A' %></p>
+          <p class="card-text"><%= language === 'russian' ? 'Жанры' : 'Genres' %>: <%= anime.genres ? anime.genres.map(genre => genre.name).join(', ') : 'N/A' %></p>
         </div>
       </div>
     <% }) %>

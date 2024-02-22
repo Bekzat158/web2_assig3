@@ -15,10 +15,17 @@
       <div class="card">
         <img src="https://image.tmdb.org/t/p/original/<%= anime.poster_path %>" alt="<%= anime.title %>">
         <div class="card-body">
-          <h5 class="card-title"><%= anime.title ? anime.title : 'N/A' %></h5>
-          <p class="card-text">Vote average: <%= anime.vote_average ? anime.vote_average : 'N/A' %></p>
-          <p class="card-text">Popularity: <%= anime.popularity ? anime.popularity : 'N/A' %></p>
-          <p class="card-text">Release date: <%= anime.release_date ? anime.release_date : 'N/A' %></p>
+          <h5 class="card-title">
+          <%= anime.title ? anime.title : (language === 'russian' ? 'Н/Д' : 'N/A') %>  </h5>
+          <p class="card-text">
+            <%= language === 'russian' ? 'Среднее количество голосов: ' : 'Vote average: ' %><%= anime.vote_average ? anime.vote_average : (language === 'russian' ? 'Н/Д' : 'N/A') %>
+          </p>
+          <p class="card-text">
+            <%= language === 'russian' ? 'Популярность: ' : 'Popularity: ' %><%= anime.popularity ? anime.popularity : (language === 'russian' ? 'Н/Д' : 'N/A') %>
+            </p>
+          <p class="card-text">
+            <%= language === 'russian' ? 'Дата выпуска: ' : 'Release date: ' %><%= anime.release_date ? anime.release_date : (language === 'russian' ? 'Н/Д' : 'N/A') %>
+          </p>
         </div>
       </div>
     <% }) %>
