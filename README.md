@@ -1,11 +1,12 @@
-<h1>web2_assig3</h1>
+<h1>web2_assig4</h1>
+<h1>Password:adminn</h1>
 <p>This project is a web application built with Node.js and Express, designed to manage a collection of anime and movies. It includes features for user authentication, user profiles, and admin capabilities.</p>
 <h2>Installation</h2>
 <p>To run this project locally, follow these steps:</p>
 <ol>
     <li>
         <p>Clone the repository:</p>
-        <pre><code>git clone https://github.com/Bekzat158/web2_assig3.git</code></pre>
+        <pre><code>git clone https://github.com/Bekzat158/web2_assig4.git</code></pre>
         <p>This command will create a local copy of the repository on your machine.</p>
     </li>
     <li>
@@ -27,6 +28,7 @@
 ├── app.js
 ├── models
 │   ├── anime.js
+│   ├── item.js
 │   ├── movie.js
 │   └── user.js
 ├── package.json
@@ -38,15 +40,31 @@
 ├── routes
 │   ├── admin.js
 │   ├── anime.js
+│   ├── history.js
 │   ├── index.js
+│   ├── language.js
 │   ├── login.js
 │   ├── logout.js
 │   ├── movie.js
 │   ├── profile.js
 │   └── register.js
-└── utils
-    ├── auth.js
-    └── validation.js
+├── translations
+│   ├── en.json
+│   └── ru.json
+├── utils
+│   ├── middleware.js
+│   └── validation.js
+└── views
+    ├── admin.ejs
+    ├── anime.ejs
+    ├── footer.ejs
+    ├── header.ejs
+    ├── history.ejs
+    ├── index.ejs
+    ├── login.ejs
+    ├── movie.ejs
+    ├── profile.ejs
+    └── register.ejs
 </code></pre>
 <ul>
     <li><strong>app.js</strong>: Entry point of the application.</li>
