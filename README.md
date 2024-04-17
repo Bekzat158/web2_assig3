@@ -1,4 +1,3 @@
-<h1>web2_assig4</h1>
 <h1>Password:adminn</h1>
 <p>This project is a web application built with Node.js and Express, designed to manage a collection of anime and movies. It includes features for user authentication, user profiles, and admin capabilities.</p>
 <h2>Installation</h2>
